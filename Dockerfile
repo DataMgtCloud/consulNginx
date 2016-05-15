@@ -21,11 +21,19 @@ RUN \
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
 
 #Setup Consul Template Files
-RUN mkdir /etc/consul-templates
+COPY etc/consul-templates/ /etc/consul-templates/
+ENV CT_FILE /etc/consul-templates/nginx.conf
+
+#Setup Nginx File
+ENV NX_FILE /etc/nginx/conf.d/app.conf
 
 EXPOSE 80
 EXPOSE 443
 
 WORKDIR /etc/nginx
 
-CMD ["/sbin/boot"]
+CMD \
+  /usr/sbin/nginx -c /etc/nginx/nginx.conf \
+& CONSUL_TEMPLATE_LOG=debug consul-template \
+  -consul=$CONSUL \
+  -template "$CT_FILE:$NX_FILE:/usr/sbin/nginx -s reload";

@@ -1,4 +1,7 @@
 {
-  "config":{
+  "service": {
+    "name": "nginx",
+    "tags": [],
+    "port": 80
   }
 }

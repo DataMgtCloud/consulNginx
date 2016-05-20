@@ -35,5 +35,5 @@ WORKDIR /etc/nginx
 CMD \
   /usr/sbin/nginx -c /etc/nginx/nginx.conf \
 & CONSUL_TEMPLATE_LOG=debug consul-template \
-  -consul=$CONSUL \
+  -consul=localhost:8500 \
   -template "$CT_FILE:$NX_FILE:/usr/sbin/nginx -s reload";

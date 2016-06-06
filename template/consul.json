@@ -1,6 +1,0 @@
-{
-  "service": {
-    "name": "Nginx",
-    "port": 80
-  }
-}

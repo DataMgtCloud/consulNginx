@@ -20,7 +20,7 @@ RUN \
 
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
 
-COPY startService.sh /etc/service/nginx/run/run.sh
+COPY startService.sh /etc/service/nginx/run
 
 #Setup Consul Template Files
 COPY etc/consul-templates/ /etc/consul-templates/

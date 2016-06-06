@@ -24,10 +24,6 @@ COPY startService.sh /etc/service/nginx/run
 
 #Setup Consul Template Files
 COPY etc/consul-templates/ /etc/consul-templates/
-ENV CT_FILE /etc/consul-templates/nginx.conf
-
-#Setup Nginx File
-ENV NX_FILE /etc/nginx/conf.d/app.conf
 
 EXPOSE 80
 EXPOSE 443
